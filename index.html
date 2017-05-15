@@ -5,25 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Udacity Website Performance Optimization portfolio project">
     <meta name="author" content="Helen Shiu">
+    
+    <!--Attempt to add
+
     <title>Cameron Pittman: Portfolio</title>
 
     <!-- Hmm, what is the impact of web fonts on speed? Measure it... -->
     <!-- It took 0.1ms to load 4594 Bytes-->
+    <!-- Loading Google fonts is defered. See script below
     <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-
+    -->
+    
     <link href="css/style.css" rel="stylesheet" media="screen">
     <link href="css/print.css" rel="stylesheet" media="print">
-
-    <script>
-      (function(w,g){w['GoogleAnalyticsObject']=g;
-      w[g]=w[g]||function(){(w[g].q=w[g].q||[]).push(arguments)};w[g].l=1*new Date();})(window,'ga');
-
-      // Optional TODO: replace with your Google Analytics profile ID.
-      ga('create', 'UA-76296649-1');
-      ga('send', 'pageview');
-    </script>
-    <script src="http://www.google-analytics.com/analytics.js"></script>
-    <script async src="js/perfmatters.js"></script>
   </head>
 
   <body>
@@ -69,5 +63,27 @@
         <p>&copy; Web Performance 2014 <span id="crp-stats"></span></p>
       </footer>
     </div>
+    <!--Use Webfontloader to defer loading Google fonts-->
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>
+      WebFont.load({
+        google: {
+          families: ['Open Sans']
+        }
+      });
+    </script>
+
+    <script async>
+      (function(w,g){w['GoogleAnalyticsObject']=g;
+      w[g]=w[g]||function(){(w[g].q=w[g].q||[]).push(arguments)};w[g].l=1*new Date();})(window,'ga');
+
+      // Optional TODO: replace with your Google Analytics profile ID. Done.
+      ga('create', 'UA-76296649-1');
+      ga('send', 'pageview');
+    </script>
+    <script src="http://www.google-analytics.com/analytics.js"></script>
+
+    <script async src="js/perfmatters.js"></script>
+
   </body>
 </html>
