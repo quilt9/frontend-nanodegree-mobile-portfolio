@@ -40,3 +40,10 @@ Thumbs.db
 ##########
 _site
 
+# Grunt #
+#########
+node_modules
+
+# SASS/SCSS #
+#############
+.sass-cache
