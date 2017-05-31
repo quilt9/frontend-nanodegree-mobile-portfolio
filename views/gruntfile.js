@@ -134,6 +134,6 @@ module.exports = function(grunt) {
         files: ["*.html"]
       } //html
     } //watch
-	}) //initConfig
+	}); //initConfig
 	grunt.registerTask("default",['uglify', 'clean', 'mkdir', 'copy', 'responsive_images','watch']);
-} // exports
+}; // exports
