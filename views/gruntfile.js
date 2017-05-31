@@ -111,6 +111,12 @@ module.exports = function(grunt) {
 			} //my_target
 		}, //uglify
     cssmin: {
+      combine: {
+        files: {
+          'dist/css/styles.min.css': ['dist/css/*.css']
+        }
+      }
+      /*
       target: {
         files: [{
           expand: true,
@@ -120,6 +126,7 @@ module.exports = function(grunt) {
           ext: '.min.css'
         }]
       }
+      */
     }, //cssmin
     watch: {
       scripts: {
@@ -127,7 +134,7 @@ module.exports = function(grunt) {
         tasks: ["uglify"]
       }, //scripts
       sass:{
-          files: ['_/src/scss/*.scss'],
+          files: ['_/src/scss/styles.scss'],
           tasks: ['sass','cssmin']
       }, //sass
       html: {
