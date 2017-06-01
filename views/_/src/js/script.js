@@ -380,9 +380,10 @@ var pizzaElementGenerator = function(i) {
 
   pizzaImage.src = "dist/images_src/pizza.png";
   /* Add width and height attributes to img - HS */
+  /* Changes made based on review comments */
   pizzaImage.style.width = "100%";
-  pizzaImage.style.height = "100%";
-  //pizzaImage.classList.add("img-responsive");
+  pizzaImage.style.height = "auto";
+  pizzaImage.classList.add("img-responsive");
   pizzaImageContainer.appendChild(pizzaImage);
   pizzaContainer.appendChild(pizzaImageContainer);
 
@@ -497,12 +498,13 @@ function updatePositions() {
 
   var items = document.querySelectorAll('.mover');
   /* Create variable for the layout to use in the loop - HS */
-  var foo = Math.sin(document.body.scrollTop / 1250);
+  /* Changes made to foo to remove Math.sin based on review comment */
+  var foo = document.body.scrollTop / 1250;
   for (var i = 0; i < items.length; i++) {
     /* Create variables once and use again and again - HS */ 
-    var phase = foo + (i % 5);
-    var newLeft = 100 * phase
-    items[i].style.left = items[i].basicLeft + newLeft + 'px';
+    var phase = Math.sin(foo + (i % 5));
+    //var newLeft = 100 * phase
+    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -522,7 +524,12 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 200; i++) {
+  /* Change made based on review comments - HS */
+  /* Calculate the number of pizzas on display based on screen height and row height */
+  var numPizzas = Math.floor((screen.height / s) * cols);
+  /* Perform the layout query outside the for loop */
+  var movingPizzas1Container = document.querySelector("#movingPizzas1");
+  for (var i = 0; i < numPizzas; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "dist/images_src/pizza.png";
@@ -530,7 +537,7 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.style.width = "73.333px";
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
-    document.querySelector("#movingPizzas1").appendChild(elem);
+    movingPizzas1Container.appendChild(elem);
   }
   updatePositions();
 });
