@@ -128,6 +128,17 @@ module.exports = function(grunt) {
       }
       */
     }, //cssmin
+    htmlmin: {                                     // Task
+      dist: {                                      // Target
+        options: {                                 // Target options
+          removeComments: true,
+          collapseWhitespace: true
+        },
+        files: {                                   // Dictionary of files
+          'index.html': 'pizza.html',     // 'destination': 'source'
+        }
+      }
+    }, //htmlmin
     watch: {
       scripts: {
         files: ["_/src/js/*.js"],
@@ -138,9 +149,9 @@ module.exports = function(grunt) {
           tasks: ['sass','cssmin']
       }, //sass
       html: {
-        files: ["*.html"]
+        files: ["pizza.html"]
       } //html
     } //watch
 	}); //initConfig
-	grunt.registerTask("default",['uglify', 'clean', 'mkdir', 'copy', 'responsive_images','watch']);
+	grunt.registerTask("default",['htmlmin', 'uglify', 'clean', 'mkdir', 'copy', 'responsive_images','watch']);
 }; // exports
