@@ -10,5 +10,12 @@ The following grunt tasks are added to the development workflow to help develope
 * grunt-contrib-sass – use to compile Sass to CSS.
 * grunt-contrib-uglify – use to minify files.
 * grunt-contrib-watch – use to run tasks whenever watched files change.
+* grunt-contrib-htmlmin - reduce the file size for html
+
 
 ## Optimization Measures 
+The following adjustments were made to the files incrementally to achieve the 94 pagespeed.
+* add width and height attributes to images
+* minify css, js, and html
+* inline critical CSS and defer loading the remaining styles until after the above-the-fold content.
+* enable compression with the use of mod_deflate
